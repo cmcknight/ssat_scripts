@@ -79,8 +79,8 @@ def load_file(args):
 			input_file = open(filename, 'r')
 		except IOError:
 			print("\n******************* Error ********************\n")
-			print("I'm sorry, the file [" + filename + "] does not exist.\n")
-			print("******************* Error ********************\n")
+			print("I'm sorry, the file [" + filename + "] does not exist.")
+			print("\n******************* Error ********************\n")
 			exit()
 
 	# load the file into a list
