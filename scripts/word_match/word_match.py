@@ -21,6 +21,10 @@ import argparse, sys
 # 	command line arguments associated with the full name of each
 #	argument.
 #################################################################
+
+#################################################################
+# parse the command line arguments                              #
+#################################################################
 def parse_args():
 	# create an instance of an argparse object
 	parser = argparse.ArgumentParser(description='Process text files for word match GIFT output.')
@@ -55,71 +59,94 @@ def parse_args():
 	return args
 
 #################################################################
+# load the file contents
+#################################################################
+def load_file(args):
+	# default the input file to the system standard input stream
+	input_file = sys.stdin
+
+	# assign to associated variables
+	filename = args['f']
+	delimiter = args['d']
+
+	# open the input stream
+	if (filename != '-'):
+		try:
+			input_file = open(filename, 'r')
+		except IOError:
+			print("\n******************* Error ********************\n")
+			print("I'm sorry, the file [" + filename + "] does not exist.\n")
+			print("******************* Error ********************\n")
+			exit()
+
+	# load the file into a list
+	lines = input_file.readlines()
+
+	# close the file
+	input_file.close()
+
+	return lines
+
+#################################################################
+# Process the file contents
+#################################################################
+def process_data(data):
+	words_and_defs = list()
+
+	# loop over the file contents
+	lesson_category = ""
+	for line in lines:
+		line = line.strip("\r\n")
+		# capture the course/lesson/category info
+		if (line.startswith("$CATEGORY")):
+			# keep category line intact
+			lesson_category = line
+		else:
+			# get the word and definition
+			line = line.split("\t")
+			word = line[0]
+			word_def = line[1]
+			words_and_defs.append([word, word_def])
+
+		# break down the course/category/lesson to extract the lesson filename
+		if (len(lesson_category) > 0):
+			tmp = lesson_category.split(":")
+			tmp = tmp[1].split("/")
+			output_filename = "SSAT_Vocabulary_Builder_" + tmp[2] + ".txt"
+
+	return words_and_defs, output_filename, lesson_category
+
+#################################################################
+# write the output file
+#################################################################
+def write_output(wordlist, filename, category):
+	print("\nCreating output file: " + filename + "\n")
+	output = open(filename, "w")
+
+	output.write(category + "\n\n")
+	output.write("[html]\n")
+	output.write("Match the words with their meanings. {\n")
+	for item in wordlist:
+		output.write(item[0] + " -> " + item[1] + "\n")
+	output.write("}")
+
+	# Close Output stream
+	output.close
+
+#################################################################
 #                        Main Program                           #
 #################################################################
 
-# default the input file to the system standard input stream
-input_file = sys.stdin
-
-# Parse the command line options
+# parse the command line options
 args = parse_args()
 
-# assign to associated variables
-filename = args['f']
-delimiter = args['d']
-
-# open the input stream
-if (filename != '-'):
-	try:
-		input_file = open(filename, 'r')
-	except IOError:
-		print("I'm sorry, the file [" + filename + "] does not exist.")
-
-#################################################################
-# Processing loop - process all file data                       #
-#################################################################
-
 # load file contents
-lines = input_file.readlines()
-words_and_defs = list()
+lines = load_file(args)
 
-# loop over the file contents
-lesson_category = ""
-for line in lines:
-	line = line.strip("\r\n")
-	# capture the course/lesson/category info
-	if (line.startswith("$CATEGORY")):
-		# keep category line intact
-		lesson_category = line
-	else:
-		# get the word and definition
-		line = line.split("\t")
-		word = line[0]
-		word_def = line[1]
-		words_and_defs.append([word, word_def])
+# process file data
+mylist, filename, category = process_data(lines)
 
-# Close the input stream
-input_file.close
-
-# break down the course/category/lesson to extract the lesson filename
-if (len(lesson_category) > 0):
-	tmp = lesson_category.split(":")
-	tmp = tmp[1].split("/")
-	output_filename = "SSAT_Vocabulary_Builder_" + tmp[2] + ".txt"
-	print(output_filename)
-
-# Open output stream and write output file
-output = open(output_filename, "w")
-
-output.write(lesson_category + "\n\n")
-output.write("[html]\n")
-output.write("Match the words with their meanings. {\n")
-for item in words_and_defs:
-	output.write(item[0] + " -> " + item[1] + "\n")
-output.write("}")
-
-# Close Output stream
-output.close
-
+# open output stream and write output file
+write_output(mylist, filename, category)
 # Exit Program
 exit
