@@ -40,14 +40,14 @@ One entry per word will be created with the following format:
 
 ##Command Line Specification
 
-word_match.py [-d\<delimiter\>] [filename]
+word_match.py [-d\<delimiter\>] [-f\<filename\>]
 
 <table>
 	<tr>
 		<td><b>-d</b></td><td>Delimiter character</td>
 	</tr>
 	<tr>
-		<td><b>filename</b></td><td>optional name of input file; defaults to standard input</td>
+		<td><b>-f</b></td><td>optional name of input file; defaults to standard input</td>
 	</tr>
 </table>
 
@@ -56,14 +56,15 @@ word_match.py [-d\<delimiter\>] [filename]
 ##Program Execution Plan
 
 1. Parse command line options
-2. Open input stream (using the system standard input stream)
-3. Parse line of data
-4. Validate Data 
+2. Open input stream (using the system standard input stream if no filename is specified with the -f switch)
+3. Load file contents
+4. Parse line of data
+5. Validate Data 
 	1. Determine if the line is empty. If so, log, discard and repeat step 1.
 	2. If first line, determine if the line is properly formatted (has "$CATEGORY:" followed by course, category and lesson entry.). If not, log the line and repeat step 1.
 	3. If not first line, determine if the line is properly formatted (has an entry, a delimiter, and another entry). If not, log the line and repeat step 1.5. Store word / definition 
-6. If not end of file, repeat steps 1-3
-7. Write GIFT-formatted file
-8. Close all streams.
+7. If not end of file, repeat steps 1-3
+8. Write GIFT-formatted file
+9. Close all streams.
 
 -----------------------------------------------------------------------------
