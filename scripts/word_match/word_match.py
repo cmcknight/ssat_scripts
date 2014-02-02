@@ -116,8 +116,10 @@ output.write("[html]\n")
 output.write("Match the words with their meanings. {\n")
 for item in words_and_defs:
 	output.write(item[0] + " -> " + item[1] + "\n")
-
 output.write("}")
+
 # Close Output stream
 output.close
+
 # Exit Program
+exit
