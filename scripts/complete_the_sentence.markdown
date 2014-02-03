@@ -75,3 +75,34 @@ The default behavior is to accept input from the standard system input stream (s
 9. Close all streams.
 
 -----------------------------------------------------------------------------
+
+##Implementation History
+
+<table>
+	<tr>
+		<th>Version</th><th>Released</th><th>Description</th>
+	</tr>
+	<tr>
+		<td>1.0</td><td>2 February 2014</td><td>Initial version</td>
+	</tr>
+</table>
+
+-----------------------------------------------------------------------------
+
+##Roadmap
+
+<table>
+	<tr>
+		<th>Version</th><th>Status</th><th>Comments</th>
+	</tr>
+	<tr>
+		<td>1.0</td>
+		<td>Complete</td>
+		<td>Create initial file with generic sentence placeholder.</td>
+	</tr>
+	<tr>
+		<td>1.1</td>
+		<td>In Design</td>
+		<td>Use custom input file with sentences. Word appearance marked by placeholders</td>
+	</tr>
+</table>
