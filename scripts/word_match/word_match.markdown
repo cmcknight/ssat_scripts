@@ -40,9 +40,11 @@ One entry per word will be created with the following format:
 
 ##Command Line Specification
 
-word_match.py [-d\<delimiter\>] [-f\<filename\>]
+word_match.py [-h] [-d\<delimiter\>] [-f\<filename\>]
 
 <table>
+	<tr>
+		<td><b>-h</b></td><td>Help</td>
 	<tr>
 		<td><b>-d</b></td><td>Delimiter character</td>
 	</tr>
@@ -50,6 +52,8 @@ word_match.py [-d\<delimiter\>] [-f\<filename\>]
 		<td><b>-f</b></td><td>optional name of input file; defaults to standard input</td>
 	</tr>
 </table>
+
+The default behavior is to accept input from the standard system input stream (stdin) via redirection.
 
 -----------------------------------------------------------------------------
 
