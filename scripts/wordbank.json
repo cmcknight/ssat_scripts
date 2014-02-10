@@ -1,0 +1,49 @@
+{
+  "Moodle GIFT Header" : {
+    "course" : "SSAT Vocabulary",
+    "category" : "Vocabulary Builder",
+    "lesson" : "Lesson 5A"
+  },
+  "wordbank" : {
+    "brash" : {
+      "definition" : "bold; hasty or lacking in sensitivity",
+      "sentence" : "The commander made a (bold) {} maneuver to keep his opponent off balance."
+    },
+    "benevolent" : {
+      "definition" : "kind, good, caring",
+      "sentence" : "Although everyone originally thought the new teacher was too strict, they began to see him as more of a (caring) {} person over time."
+    },
+    "bereft" : {
+      "definition" : "without, devoid of",
+      "sentence" : "After Hurricane Katrina, many people in New Orleans were (without) {} food or shelter."
+    },
+    "burgeon" : {
+      "definition" : "to come forth, blossom",
+      "sentence" : "With very little encouragement, Leslie (blossomed) {} into a very good writer."
+    },
+    "berate" : {
+      "definition" : "to scold severely",
+      "sentence" : "The old woman began to (scold severely) {} the salesman for selling her the wrong item."
+    },
+    "bloated" : {
+      "definition" : "swollen, bigger than desired",
+      "sentence" : "The pig had eaten so much that its stomach was (swollen) {} like a balloon ready to burst."
+    },
+    "bewilder" : {
+      "definition" : "to confuse",
+      "sentence" : "Sheri tried to (confuse) {} the other player with her movements."
+    },
+    "blandish" : {
+      "definition" : "to coax through flattery",
+      "sentence" : "Tom tried to (coax through flattery) {} Mrs. Samuels into giving him the prize."
+    },
+    "bourgeois" : {
+      "definition" : "middle class",
+      "sentence" : "Sarah's family was part of the (middle class) {} who had always been merchants."
+    },
+    "brumal" : {
+      "definition" : "wintry, relating to winter",
+      "sentence" : "It was a (wintry) {} period across the country."
+    }
+  }
+}
