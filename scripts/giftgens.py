@@ -32,12 +32,21 @@ def wordmatch_generator(wordbank, outfile):
 		Returns:
 			None
 	"""			
-	outfile.write("Match the words with their meanings. {\n")
+	# extract the keys and sort them
+	keys = wordbank.keys()
+	keys = sorted(keys)
 	
-	# walk the word bank and generate the GIFT formatted output
-	for key in wordbank:
-		outfile.write("=" + key + " -> " + wordbank[key]['definition'] + "\n")
-	outfile.write("}")
+	# iterate over the dictionary and write the entries to the output file
+	for key in keys:
+		sentence = "The definition of word %s is " % key
+		outfile.write(sentence + "{\n")
+		for answerkey in keys:
+			if answerkey == key:
+				leader = "="
+			else:
+				leader = "~"
+			outfile.write(leader + wordbank[answerkey]['definition'] + "\n")
+		outfile.write("}\n\n")
 
 #====================================================================
 
