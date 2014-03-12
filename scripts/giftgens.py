@@ -38,7 +38,7 @@ def wordmatch_generator(wordbank, outfile):
 	
 	# iterate over the dictionary and write the entries to the output file
 	for key in keys:
-		sentence = "The definition of word %s is " % key
+		sentence = "The definition of word <b>%s</b> is " % key
 		outfile.write(sentence + "{\n")
 		for answerkey in keys:
 			if answerkey == key:
