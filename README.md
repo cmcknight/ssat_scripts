@@ -2,7 +2,11 @@
 
 This repository contains a collection of scripts that convert text-based data files into GIFT format files suitable for uploading into Moodle.
 
-## Vocabulary Builders
+## Vocabulary Data File Builder
+
+This script takes a tab-delimited file as it's input and generates a JSON-formatted file used by the quiz builders below.
+
+## Vocabulary Quiz Builders
 
 ###Word Match (word_match.py)
 
